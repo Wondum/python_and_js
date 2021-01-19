@@ -1,0 +1,41 @@
+label {
+  line-height:25px;
+}
+.align-top * {
+  vertical-align: top;
+}
+
+#article-list, #manage-article {
+    margin: 0px 20px;
+}
+
+.fa-custom {
+  color: orange;
+}
+
+.magazine {
+  column-count: 3;
+}
+
+container-fluid .row {
+  border: none;
+}
+
+#hr_style {
+  border: 1px solid coral;
+  border-radius: 3px;
+  width: 56000%;
+}
+
+#image_style {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+#article_url {
+  float: right;
+  background-color:yellow;
+}
+
+#label-mag { width: 220px; }
+#label-art { width: 155px; }

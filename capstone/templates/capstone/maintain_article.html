@@ -1,0 +1,96 @@
+{% extends "capstone/layout.html" %}
+
+{% block body %}
+<h3>{{ page_title }}</h3>
+<div id="article-list">
+    {% if user.is_authenticated %}
+    <form id="existing-article-form" action="{% url 'maintain_article' None %}" method="post">
+        {% csrf_token %}
+        {% if error %}
+            <div class="alert alert-danger">
+                <strong>ERROR!</strong> {{ error }}
+            </div>
+        {% endif %}
+        {% if success %}
+            <div class="alert alert-success" role="alert">
+                <strong>Success</strong> {{ success }}
+            </div>
+        {% endif %}
+        <label id="label-art" for="article_id">Existing Articles:</label>
+        <select name="article_id" onchange="this.form.submit()"> 
+            <option  value=''></option>
+            {% for art in articles %}
+                {% if art_id == art.id|stringformat:"i" %}
+                    <option value="{{ art.id }}" selected>{{ art.title }}</option>
+                {% elif art_id == art.id %}
+                    <option value="{{ art.id }}" selected>{{ art.title }}</option>
+                {% else %}
+                    <option value="{{ art.id }}">{{ art.title }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </form>
+    <form id="new-article-form" action="{% url 'maintain_article' 'article' %}" method="post">
+        {% csrf_token %}
+        {% if article %}
+            {% for a in article %}
+                <input name="article_id" type=hidden value="{{ article.id }}">
+                <label id="label-art" for="article-title">Title:</label>
+                <input id="article-title" name="article-title" type="text" value="{{ a.title }}" size="100"/>
+                <p class="align-top">
+                <label id="label-art" for="article-tags">Tag(s):</label>
+                    <select id="article-tags" name="article-tags" multiple>
+                        {% for tag in tags %}
+                            {% if tag in a.tag_list%}
+                                <option value="{{ tag }}" selected>{{ tag }}</option>
+                            {% else %}
+                                <option value="{{ tag }}">{{ tag }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </p>
+                <label id="label-art" for="article-synopsis">Synopsis:</label>
+                <textarea class="form-control" id="article-synopsis" name="article-synopsis" placeholder="Synopsis">{{ a.synopsis }}</textarea>
+                <label id="label-art" for="article-text">Article Content:</label>
+                <textarea rows="6" class="form-control" id="article-id" name="article-text" placeholder="New Article">{{ a.content }}</textarea>
+                <br>
+                <label id="label-art" for="article-title">Headline Picture URL:</label>
+                <input id="article-picture" name="article-picture" type="text" value="{{ a.article_picture }}"/>
+                <br>
+                <label id="label-art" for="article-column">Article Column Size:</label>
+                <input id="article-column" name="article-column" type="text" value="{{ a.article_column }}"/>
+            {% endfor %}
+        {% else %}
+            <input name="article_id" type=hidden value="0">
+            <label id="label-art" for="article-title">Title:</label>
+            <input id="article-title" name="article-title" type="text"/>
+            <p class="align-top">
+            <label id="label-art" for="article-tags">Tag(s):</label>
+                <select id="article-tags" name="article-tags" multiple>
+                    {% for tag in tags %}
+                        <option value="{{ tag }}">{{ tag }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+            
+            <label id="label-art" for="article-synopsis">Synopsis:</label>
+            <textarea class="form-control" id="article-synopsis" name="article-synopsis" placeholder="Synopsis"></textarea>
+            <label id="label-art" for="article-text">Article Content:</label>
+            <textarea rows="6" class="form-control" id="article-id" name="article-text" placeholder="Article Content"></textarea>
+            <br>
+            <label id="label-art" for="article-title">Headline Picture URL:</label>
+            <input id="article-picture" name="article-picture" type="text" value="{{ a.article_picture }}"/>
+            <br>
+            <label id="label-art" for="article-column">Article Column Size:</label>
+            <input id="article-column" name="article-column" type="text" value="{{ a.article_column }}"/>
+        {% endif %}
+        
+        <div class="d-flex justify-content-between">
+            <button type="submit" formaction="/maintain_article/Add" class="btn btn-primary">Publish</button>
+            <button type="submit" formaction="/maintain_article/Delete" class="btn btn-secondary">Delete</button>
+          </div>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

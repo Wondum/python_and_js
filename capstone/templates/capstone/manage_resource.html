@@ -1,0 +1,61 @@
+{% extends "capstone/layout.html" %}
+
+{% block body %}
+<div id="manage-article">
+    <hr>
+    <h2 style="text-align: center;">Manage Resources</h2>
+    <br>
+    {% if error %}
+        <div class="alert alert-danger">
+            <strong>ERROR!</strong> {{ error }}
+        </div>
+    {% endif %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            <strong>Success</strong> {{ success }}
+        </div>
+    {% endif %}
+    <div id="magazine-div">
+        <hr>
+        <h3>Magazine Settings:</h3>
+        <br>
+        <form id="magazine-form" action="{% url 'manage_resource' 'magazine' %}" method="post">
+            {% csrf_token %}
+            <div>
+                <label id="label-mag" for="mag-title">Magazine Title:</label>
+                <input type="text" name="mag-title" id="mag-title" value="{{ mag.title }}">
+            </div>
+            <div>
+                <label id="label-mag" for="mag-5-star-count">Number of Reads for 5 star(<span class="fa fa-star fa-custom"></span>):</label>
+                <input type="text" name="mag-5-star-count" id="mag-5-star-count" value="{{ mag.five_star_count }}">
+            </div>
+            <button type="submit" formaction="/manage_resource/magazine" class="btn btn-primary">Save</button>
+        </form>    
+    </div>
+    <hr>
+    <h3>Tag:</h3>
+    <br>
+    <div id="tag-div">
+        <form id="tag-form" action="{% url 'manage_resource' 'add' %}" method="post">
+            {% csrf_token %}
+            <label id="label-mag" for="tag">Add New tag:</label>
+            <input type="text" name="tag" id="tag">
+            <div>
+                <p class="align-top">
+                <label id="label-mag" for="tag">Existing Tag(s):</label>
+                <select name="tag-list" multiple>
+                {% for tag in tags %}
+                    <option value="{{ tag.id }}">{{ tag.tag_name }}</option>
+                {% endfor %}
+                </select>
+                </p>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" formaction="/manage_resource/add" class="btn btn-primary">Add</button>
+                    <button type="submit" formaction="/manage_resource/delete" class="btn btn-secondary">Delete</button>
+                </div>
+            </div>
+        </form>
+        <hr>
+    </div>
+</div>
+{% endblock %}
