@@ -64,34 +64,34 @@ The application uses tags, 5-star review, and author's page to filter search res
 # Source Code
 
 ## Javascript
-[publish.js](https://github.com/Wondum/python_and_js/blob/main/capstone/static/capstone/publish.js): Javascript code to dynamically create HTML page for displaying individual articles and entire magazine according to the column setting in *Maintain Article* page.
+[publish.js](https://github.com/Wondum/python_and_js/blob/capstone/capstone/static/capstone/publish.js): Javascript code to dynamically create HTML page for displaying individual articles and entire magazine according to the column setting in *Maintain Article* page.
 
 ## CSS
-[styles.css](https://github.com/Wondum/python_and_js/blob/main/capstone/static/capstone/styles.css): CSS code to set the look and feel of web pages.
+[styles.css](https://github.com/Wondum/python_and_js/blob/capstone/capstone/static/capstone/styles.css): CSS code to set the look and feel of web pages.
 
 ## HTML
 
 HTML code includes bootstrap framework to display user friendly error/success messages and various HTML elements
 
-1. [index.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/index.html): HTML code to list the articles with their title, star rating, number of reads, author name and synopsis.
-2. [layput.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/layout.html): HTML code to display the menu to navigate between web pages.
-3. [login.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/login.html): HTML code for login page.
-4. [maintain_article.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/maintain_article.html): HTML code to add, update, and delete article details.
-5. [manage_resource.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/manage_resource.html): HTML code to set magazine details and maintain tags.
-6. [preview_article.html](https://github.com/Wondum/python_and_js/blob/main/capstone/templates/capstone/preview_article.html): HTML code to display individual articles or whole magazine using *publish.js* javascript code.
+1. [index.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/index.html): HTML code to list the articles with their title, star rating, number of reads, author name and synopsis.
+2. [layput.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/layout.html): HTML code to display the menu to navigate between web pages.
+3. [login.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/login.html): HTML code for login page.
+4. [maintain_article.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/maintain_article.html): HTML code to add, update, and delete article details.
+5. [manage_resource.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/manage_resource.html): HTML code to set magazine details and maintain tags.
+6. [preview_article.html](https://github.com/Wondum/python_and_js/blob/capstone/capstone/templates/capstone/preview_article.html): HTML code to display individual articles or whole magazine using *publish.js* javascript code.
 7. *register.html*: HTML code to register new authors.
 
 ## Python with Django framework
 
-### [models.py](https://github.com/Wondum/python_and_js/blob/main/capstone/models.py) : Django models for the application
+### [models.py](https://github.com/Wondum/python_and_js/blob/capstone/capstone/models.py) : Django models for the application
 * *User*: a model inheriting from Django AbstractUser class.
 * *Tag*: a model for all the tags in the application.
 * *Article*: a model to store article data. It has a foreigk key reference to * *User* model.
 * *Articletotag*: a models that stores tags associated with each article.
 
-### [tests.py](https://github.com/Wondum/python_and_js/blob/main/capstone/tests.py): unit test python code using Django TestCase involving all models in the application.
+### [tests.py](https://github.com/Wondum/python_and_js/blob/capstone/capstone/tests.py): unit test python code using Django TestCase involving all models in the application.
 
-### [views.py](https://github.com/Wondum/python_and_js/blob/main/capstone/views.py): main python code that has all the functions for the application logic
+### [views.py](https://github.com/Wondum/python_and_js/blob/capstone/capstone/views.py): main python code that has all the functions for the application logic
 * to register, login , logout authors
 * to star-rate, tag, maintain article and manage resource
 * to fetch articles and return JSON data suitable for javascript processing
