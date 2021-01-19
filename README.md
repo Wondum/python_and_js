@@ -8,6 +8,7 @@
     * [CSS](#css)
     * [HTML](#html)
     * [Python with Django framework](#python-with-django-framework)
+4. [Running Application](#running-application)
 
 ## Introduction
 
@@ -97,4 +98,13 @@ HTML code includes bootstrap framework to display user friendly error/success me
 * to fetch articles and return JSON data suitable for javascript processing
 * to render request to display article, magazine and any error or success messages
 
+## Running Application
 
+1. Download the distribution code from https://github.com/Wondum/python_and_js/archive/capstone.zip and unzip it
+2. Go to project directory where you see manage.py, README.md ...
+3. Run *python manage.py runserver* on the command line terminal
+4. Go to *http://127.0.0.1:8000/* and you will be on the index page
+5. If you make any change to the application,
+    * 5.1\. Run *python manage.py makemigrations capstone* on the command line terminal to make migrations for the capstone application
+    * 5.2\. Run *python manage.py migrate* on the command line terminal to apply migrations to your database
+    * 5.3\. Go to step #3 above to run application
